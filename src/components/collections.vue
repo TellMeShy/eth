@@ -12,7 +12,7 @@
           <li class="produce" v-for="i in produceList"  :token_id="i.token_id" :itemid="i.id">
             <router-link :to="{path:'/detail',query:{id:i.token_id}}">
               <h5>{{i.name}}</h5>
-              <img src="./../../static/images/produce.png" alt="">
+              <img :src="i.picture" alt="">
             </router-link>
             <div class="produce_message">
               <div class="produce_mes">
@@ -44,6 +44,7 @@
         </div>
       </div>
     </section>
+    <div v-if="versions"></div>
     <Vbuy></Vbuy>
   </div>
 </template>

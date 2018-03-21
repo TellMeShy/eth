@@ -7,7 +7,7 @@
           <div class="personShow" v-if="networkCur&&perShow">Offlin</div>
           <div class="personShow" v-if="!networkCur&&perShow">
             <p v-cloak>{{accounts}}</p>
-            <p class="setName"><span @click="changeNameShow=true;">{{name}}</span></p>
+            <p class="setName"><span @click="$store.commit('changeName',true)">{{name}}</span></p>
           </div>
         </a>
         <div class="nav">
@@ -60,7 +60,7 @@
         <input type="text" placeholder="Nickname" v-model="newName">
         <div class="alert-setName-btn">
           <button class="cancel" @click="changeNameShow=false;">Cancel</button>
-          <button class="ok" :class="{isok: isok}" @click="changeName">ok</button>
+          <button class="ok" :class="{isok: isok}" @click="$store.commit('nickName',newName)">ok</button>
         </div>
       </div>
     </div>
@@ -79,7 +79,6 @@ export default {
       shadeShow:false,
       alertSetName:false,
       isok:false,
-      changeNameShow: false,  //改名框是否显示
       newName: '',   //新名字
       navCur:0,
     }
@@ -88,6 +87,9 @@ export default {
   computed: {
     networkCur () {
       return this.$store.state.networkCur
+    },
+    changeNameShow () {
+      return this.$store.state.changeNameShow
     },
     accounts () {
       return this.$store.state.accounts
@@ -120,9 +122,7 @@ export default {
         }
       },100)
     },
-
   },
-
   watch:{
     newName(val){ //监听服务器改变
       var $this = this;
@@ -140,7 +140,8 @@ export default {
       }else if(/\/collections/.test(this.$route.path)){
         this.navCur=2
       }
-    }
+    },
+
   }
 }
 </script>

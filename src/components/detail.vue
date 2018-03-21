@@ -63,8 +63,9 @@
                 <dd>{{dataDetail.token_id}}</dd>
               </dl>
             </div>
+            <h6 class="detail-title">{{dataDetail.name}}</h6>
             <div v-html="dataDetail.introduce"></div>
-            <!--<h6 class="detail-title">Te Wahipounamu – South West New Zealand</h6>-->
+
             <!--<p class="detail-msg">The South Island or Te Waipounamu (in Māori) is the larger of the two major islands of New Zealand, the other being the smaller but more-->
             <!--populous North Island. It is bordered to the north by Cook Strait, to the west by the Tasman Sea, and to the south and east by the Pacific-->
             <!--Ocean. The South Island covers 150,437 square kilometres (58,084 sq mi), making it the world's 12th-largest island. It has a temperate-->

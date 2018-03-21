@@ -50,7 +50,7 @@
 
       </div>
     </section>
-    {{pageCur}}
+    <div v-if="versions"></div>
     <Vbuy></Vbuy>
   </div>
 </template>
@@ -64,7 +64,6 @@ export default {
   },
   data () {
     return {
-
     }
   },
   computed: {
@@ -85,7 +84,9 @@ export default {
     },
   },
   created:function () {
-    this.$store.dispatch('produce',{page:1,num:1})
+      this.$store.dispatch('produce',{page:1,num:1})
+
+
   },
   methods:{
     changePage:function (str) {
@@ -93,6 +94,7 @@ export default {
       if(str>$this.pageNum){
         return
       }
+
       //获取产品列表
       this.$store.dispatch('produce',{page:str,num:1})
     }

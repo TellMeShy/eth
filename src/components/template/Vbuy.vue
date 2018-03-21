@@ -3,19 +3,22 @@
     <div class="alert-buy" @click.stop="">
       <h6>{{detail.name}}</h6>
       <p class="alert-buy-tip">The current buying price for this contract is <b>{{detail.price}}</b> ETH.</p>
-      <p class="alert-buy-tip">If someone decides to snatch the contract away from you, you will be paid <b>{{detail.nextprice}}</b> ETH.</p>
+      <p class="alert-buy-tip">The next price someone can purchase this contract for is  <b>{{detail.nextprice}}</b> ETH
+       </p>
       <p class="alert-buy-tip1">
-        Transactions on the Blockchain take time to process. By the time you buy this contract, it's price may already be higher
-        than is shown on the card and your transaction will fail. You may submit a higher amount to increase the chances of a
-        successful transaction. If you bid higher than the contract's current price, the difference will be refunded automatically.
+        Transactions on the Blockchain take time to process. By the time you buy this contract, it's price may already be higher than is shown on the card and your transaction will fail. You may submit a higher amount to increase the chances of a successful transaction. If you bid higher than the contract's current price, the difference will be refunded automatically.
       </p>
       <dl class="Custom_price">
         <dt>Custom price:</dt>
         <dd><input type="text" v-model="newPrice" onkeyup="value=value.replace(/[^\d]/g,'')"></dd>
       </dl>
       <button class="ico" @click="pay"></button>
-      <p class="alert-buy-tip2">* If some one else outbid you during this time, your ETH will be refunded.</p>
+
+      <p class="alert-buy-tip2">* If someone else outbid you during this time, your ETH will be refunded.
+      </p>
+
     </div>
+
     <span v-if="versions"></span>
 
   </div>
@@ -45,13 +48,17 @@
     },
     created:function () {
       var $this = this;
-      $this.id = $this.$route.query.id;
+      if($this.$route.query.id){
+        $this.id = $this.$route.query.id;
+      }
+
 //      $this.$store.commit('toBuy',id)
     },
     methods:{
       pay:function () {
           var $this = this;
-        alert($this.newPrice);
+          $this.id = $this.$store.state.detail.id
+        alert($this.id);
         $this.$store.commit('topay',{newPrice:$this.newPrice,id:$this.id})
 
       }

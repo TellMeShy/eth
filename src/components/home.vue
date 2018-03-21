@@ -17,26 +17,17 @@
         <dl>
           <dt class="show_img"></dt>
           <dd class="sho_detail">
-            <p>Sed interdum pharetra massa vel vulputate. Fusce iaculis sem erat, in tristique or ornare. Donec
-              fringilla venenatis semper. Suspendisse potenti. Quisque fringilla efficitur eros no pretium. Mauris
-              dolor eros, fermentum non ligula, consequat fermentum sapien. In hac habitasse platea dictumst.
-              Cras mattis sollicitudin orci, vitae facilisis diam maximus non.</p>
-            <p>Fringilla nibh sapien, in bibendum eros dictum at. Nam aliquam turpis a nisi sollicitudin volutpat.
-              Nunc orci lorem, rutrum vel massa eget, eleifend malesuada enim. Morbi vitae sagittis libero, in
-              ultricies lorem. Ut eleifend, nunc auctor eleifend placerat, ex diam tempor odio, vel pellentesque
-              quam lorem vel nunc. </p>
+            <p>CryptoWorldHeritage is the first platform for collecting one-of-kind digital world heritage collectibles. Each world heritage is represented by one (and only one) ERC721-compliant smart contract on the </p>
+            <p>Ethereum blockchain. Collectors can buy and own their own Taj Mahal or Machu Picchu. Our hope is that collectors around the world will see blockchain technology as a vehicle to learn to appreciate and preserve the world heritage, and that blockchain enthusiasts will learn about legendary creative ability of mankind and our nature.
+            </p>
           </dd>
         </dl>
         <dl>
           <dt class="sho_detail">
-          <p>Nullam in sodales sem. Fusce sed pretium libero. In a ipsum eu lorem ornare finibus non sipsum.
-            In eu gravida magna. Nunc sit amet dignissim ex. Aenean hendrerit turpis ut scelerisque tempor.
-            Duis ut elit venenatis, semper neque quis, pharetra lacus.</p>
-          <p>Curabitur sed metus non est mattis bibendum. Cras at dolor arcu. In vitae fermentum neque, vel
-            efficitur odio. Vivamus pellentesque vestibulum urna, at suscipit ipsum tincidunt nec. Vivamus ac
-            odio elit. Nunc eget ex bibendum, auctor nulla ullamcorper, maximus eros. Duis eros eros, semp
-            efficitur efficitur nec, molestie at sem. Nam quis felis venenatis, consectetur ipsum non, suscipit
-            quam. Mauris luctus leo eget fringilla condimentum. Aliquam erat volutpat.</p>
+          <p>CryptoWorldHeritage is an interactive game that lets anyone buy and own world heritage as Smart Contracts on the Ethereum Blockchain. As soon as you acquire a world heritage, you take ownership of that contract and it automatically increases in price.
+        </p>
+          <p>If someone else wants to buy your world heritage, they can pay up to double the price that you paid. You will then lose the ownership of that contract, but you will receive up to double the amount in ETH automatically transferred back to your crypto wallet.
+          </p>
           </dt>
           <dd class="show_img"></dd>
         </dl>
