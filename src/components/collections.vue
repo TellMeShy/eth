@@ -25,11 +25,11 @@
                   <dd>61</dd>
                 </dl>
               </div>
-              <div class="produce_buy" v-if="i.status == 1">
-                <button class="buy_btn" @click="$store.dispatch('toBuy',i.token_id)">BUY - {{i.price}}</button>
+              <div class="produce_buy" v-if="i.price">
+                <button class="buy_btn"  @click="$store.dispatch('toBuy',i.token_id)">BUY - {{i.price}}</button>
                 <button class="groupBuy_btn">GROUP BUY</button>
               </div>
-              <div class="produce_buy" v-if="i.status == 2">
+              <div class="produce_buy" v-if="!i.price">
                 <button class="comingSoon_btn">Coming Soon</button>
               </div>
 

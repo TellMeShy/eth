@@ -2,6 +2,10 @@
   <div id="app">
     <header>
       <div class="header">
+        <div class="network_err" v-if="networkCur!=0" v-cloak >
+          <h5>Not Connected</h5>
+          <p>{{network[networkCur]}}</p>
+        </div>
         <a href="" class="logo ico"></a>
         <a class="eth-logo ico"  :class="{'eth-is-logo':!networkCur}" @mouseenter="personShow" @mouseleave="personOut">
           <div class="personShow" v-if="networkCur&&perShow">Offlin</div>
@@ -19,7 +23,8 @@
       </div>
 
     </header>
-    <router-view></router-view>
+
+    <router-view/>
     <footer>
       <div class="footer">
         <div class="footer-t">
@@ -55,21 +60,23 @@
       </div>
     </footer>
     <div class="shade" v-if="changeNameShow" v-cloak>
-      <div class="alert-setName">
+      <div class="alert-setName" @keydown.13="cgName">
         <h5>Set Nickname</h5>
         <input type="text" placeholder="Nickname" v-model="newName">
         <div class="alert-setName-btn">
-          <button class="cancel" @click="changeNameShow=false;">Cancel</button>
-          <button class="ok" :class="{isok: isok}" @click="$store.commit('nickName',newName)">ok</button>
+          <button class="cancel" @click="$store.commit('changeName',false)">Cancel</button>
+          <button class="ok" :class="{isok: isok}" @click="cgName">ok</button>
         </div>
       </div>
     </div>
+    <Valert></Valert>
   </div>
 
 </template>
 
 <script>
   import store from '@/store/store'
+  import Valert from './components/template/Valert'
 export default {
   name: 'App',
   data () {
@@ -81,7 +88,14 @@ export default {
       isok:false,
       newName: '',   //新名字
       navCur:0,
+      network:['11','You’ll need a safe place like MetaMask to store all of your valuable world heritage. This will also act as your login to the game (no extra password needed). Install MetaMask'
+        ,'You are using a test network now. Please join the Main network to continue.'
+        ,'It looks like MetaMask is locked. Please unlock MetaMask and then refresh this page.'
+      ],                //网络提示
     }
+  },
+  components:{
+    Valert
   },
   store,
   computed: {
@@ -113,6 +127,11 @@ export default {
       $this.perShow = true;
       $this.permouseenter = false;
     },
+    cgName:function () {
+      if(this.isok){
+        $this.$store.commit('nickName',newName)
+      }
+    },
     personOut:function () {
       var $this = this;
       $this.permouseenter = true
@@ -127,7 +146,6 @@ export default {
     newName(val){ //监听服务器改变
       var $this = this;
       $this.newName = val.replace(/ /g,'')
-      console.log($this.newName.length);
       if($this.newName.length>2&&$this.newName.length<51){
         $this.isok = true
       }else{
@@ -404,6 +422,28 @@ export default {
   }
   [v-cloak] {
     display:none;
+  }
+  .network_err{
+    padding-left: 18px;
+    width: 1200px;
+    height: 80px;
+    box-sizing: border-box;
+    position: absolute;
+    border: 1px solid #f3c37f;
+    border-radius: 5px;
+    bottom: -100px;
+    background: #fff5db;
+    padding-top: 18px;
+    z-index: 2;
+  }
+  .network_err h5{
+    line-height: 22px;
+    font-size: 22px;
+  }
+  .network_err p{
+    line-height: 32px;
+    font-size: 16px;
+    color: #666;
   }
   .nav .nav_L{
     padding: 0;

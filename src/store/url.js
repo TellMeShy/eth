@@ -3,6 +3,7 @@
 export default{
   setNickname:'//api.test.cryptoworldheritage.io/user/setNickname',
   getNickname:'//api.test.cryptoworldheritage.io/user/getNickname',
-  heritages:'http://api.test.cryptoworldheritage.io/heritages',
-  heritage:'http://api.test.cryptoworldheritage.io/heritage/',
+  heritages:'//api.test.cryptoworldheritage.io/heritages',
+  heritage:'//api.test.cryptoworldheritage.io/heritage/',
+  transaction:'//api.test.cryptoworldheritage.io/transaction',
 }

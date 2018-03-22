@@ -4,8 +4,8 @@
       <div class="market">
         <h3 class="market-title">Market</h3>
         <ul class="market-nav">
-          <li class="HighestPriced cur">Highest Priced</li>
-          <li class="LowestPriced">Lowest Priced</li>
+          <li class="HighestPriced" :class="{cur:order == 2}" @click="orderChange(2)">Highest Priced</li>
+          <li class="LowestPriced" :class="{cur:order == 1}"@click="orderChange(1)">Lowest Priced</li>
           <li class="Newest">Newest</li>
           <li class="Verified">Verified</li>
         </ul>
@@ -30,11 +30,11 @@
                   <dd>61</dd>
                 </dl>
               </div>
-              <div class="produce_buy" v-if="i.status == 1">
+              <div class="produce_buy" v-if="i.price">
                 <button class="buy_btn" @click="$store.dispatch('toBuy',i.token_id)">BUY - {{i.price}}</button>
                 <button class="groupBuy_btn">GROUP BUY</button>
               </div>
-              <div class="produce_buy" v-if="i.status == 2">
+              <div class="produce_buy" v-if="!i.price">
                 <button class="comingSoon_btn">Coming Soon</button>
               </div>
 
@@ -64,6 +64,7 @@ export default {
   },
   data () {
     return {
+      order:2,
     }
   },
   computed: {
@@ -84,7 +85,8 @@ export default {
     },
   },
   created:function () {
-      this.$store.dispatch('produce',{page:1,num:1})
+    var $this = this;
+    this.$store.dispatch('produce',{page:1,num:1,order:$this.order})
 
 
   },
@@ -94,9 +96,16 @@ export default {
       if(str>$this.pageNum){
         return
       }
-
       //获取产品列表
-      this.$store.dispatch('produce',{page:str,num:1})
+      this.$store.dispatch('produce',{page:str,num:1,order:$this.order})
+    },
+    orderChange:function (num) {
+        var $this = this;
+       if($this.order==num){
+           return
+       }
+      $this.order = num;
+      this.$store.dispatch('produce',{page:1,num:1,order:$this.order})
     }
   },
 

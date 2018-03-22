@@ -1,6 +1,6 @@
 <template>
   <div class="shade Vbuy" v-if="buyShow" v-cloak @click="$store.commit('buyHide')">
-    <div class="alert-buy" @click.stop="">
+    <div class="alert-buy" @click.stop="" @keydown.13="pay">
       <h6>{{detail.name}}</h6>
       <p class="alert-buy-tip">The current buying price for this contract is <b>{{detail.price}}</b> ETH.</p>
       <p class="alert-buy-tip">The next price someone can purchase this contract for is  <b>{{detail.nextprice}}</b> ETH
@@ -10,7 +10,7 @@
       </p>
       <dl class="Custom_price">
         <dt>Custom price:</dt>
-        <dd><input type="text" v-model="newPrice" onkeyup="value=value.replace(/[^\d]/g,'')"></dd>
+        <dd><input type="text" v-model="newPrice" onkeyup="value=value.replace(/[^\d.]/g,'')"></dd>
       </dl>
       <button class="ico" @click="pay"></button>
 
@@ -58,8 +58,8 @@
       pay:function () {
           var $this = this;
           $this.id = $this.$store.state.detail.id
-        alert($this.id);
-        $this.$store.commit('topay',{newPrice:$this.newPrice,id:$this.id})
+
+        $this.$store.commit('topay',{newPrice:$this.newPrice-0,id:$this.id})
 
       }
     },

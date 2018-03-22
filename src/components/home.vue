@@ -2,10 +2,7 @@
   <div class="home">
     <section class="banner-warp">
       <div class="banner">
-        <div class="network_err" v-if="networkCur!=0" v-cloak >
-          <h5>Not Connected</h5>
-          <p>{{network[networkCur]}}</p>
-        </div>
+
         <h2>OWN A WORLD HERITAGE<br/>
           ON THE BLOCKCHAIN</h2>
         <a href="marketplace" class="to-Marketplace">Start</a>
@@ -41,17 +38,15 @@ export default {
   name: 'home',
   data () {
     return {
-      network:['11','You’ll need a safe place like MetaMask to store all of your valuable world heritage. This will also act as your login to the game (no extra password needed). Install MetaMask'
-        ,'You are using a test network now. Please join the Main network to continue.'
-        ,'It looks like MetaMask is locked. Please unlock MetaMask and then refresh this page.'
-      ],                //网络提示
+
     }
   },
   computed: {
-    networkCur () {
-      return this.$store.state.networkCur
-    },
-  }
+
+  },
+  created:function () {
+
+  },
 }
 </script>
 
@@ -124,25 +119,6 @@ export default {
   }
   dd.show_img{
     background: url("../../static/images/indeximg2.png") center center no-repeat;
-  }
-  .network_err{
-    padding-left: 18px;
-    width: 1200px;
-    height: 80px;
-    position: absolute;
-    border: 1px solid #f3c37f;
-    border-radius: 5px;
-    top: 20px;
-    background: #fff5db;
-    padding-top: 18px;
-  }
-  .network_err h5{
-    font-size: 22px;
-  }
-  .network_err p{
-    line-height: 32px;
-    font-size: 16px;
-    color: #666;
   }
 
 </style>

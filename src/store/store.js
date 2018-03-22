@@ -24753,7 +24753,7 @@ const state = {
     "updatedAt": "2018-03-20T09:04:58.828Z"
   },
   url,    //地址
-  hydz:'0xb6b1c7a92ba3720fb9d8e943f9c617af6f344377',
+  hydz:'0x200b23ebc2207512306f9dd56a848f346a1a87a1',
   fbdz:'0x7eeb94a7913f91135812a75437ae139830ed59e4',
   networkCur:0,     //网络状态
   accounts:'',       //用户合约
@@ -24770,6 +24770,7 @@ const state = {
   payNum:'',                            //实际支付
   versions:0,
   changeNameShow: false,  //改名框是否显示
+  alertShow: false,       //提示框显示
 };
 const mutations={
   init(state){
@@ -24866,7 +24867,7 @@ const mutations={
     console.log('zzz:'+state.accounts);
     console.log('yyy:'+params._address);
     if(state.accounts==state.detail.address){
-      alert('不能从自己手中购买')
+      state.alertShow = 'You cannot purchase your own contract.'
     }else {
       state.buyShow=true;
     }
@@ -24913,6 +24914,11 @@ const mutations={
               alert(111)
             } else {
               console.log(txHash);
+              console.log(params.id);
+              axios.get(url.transaction,{params:{token_id:params.id}}).then(function (response) {
+              }) .catch(function (error) {
+                console.log(error);
+              });
               state.buyShow = false
             }
           });
@@ -24942,6 +24948,9 @@ const mutations={
   },
   changeName(state,bool){
     state.changeNameShow = bool
+  },
+  isAlertShow(state,bool){
+    state.alertShow = bool
   }
 }
 const actions = {
@@ -24967,14 +24976,14 @@ const actions = {
       })
     }
     else if(state.networkCur==3){
-      alert('请先登录,再刷新页面')
+      state.alertShow = 'Please login and refresh the page first.'
     }else {
-      alert('请切换线路')
+      state.alertShow = 'Please switch lines'
     }
 
   },
   produce(context,params){
-    axios.get(state.url.heritages,{params:{page:params.page}})
+    axios.get(state.url.heritages,{params:{page:params.page,order:params.order}})
       .then(function (response) {
 
         // axios.get(state.jsonArr)
