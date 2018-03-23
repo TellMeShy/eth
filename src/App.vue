@@ -128,8 +128,9 @@ export default {
       $this.permouseenter = false;
     },
     cgName:function () {
+        var $this = this;
       if(this.isok){
-        $this.$store.commit('nickName',newName)
+        $this.$store.commit('nickName',$this.newName)
       }
     },
     personOut:function () {

@@ -173,7 +173,6 @@ const mutations={
               console.log(txHash);
               console.log(params.id);
               axios.get(url.transaction,{params:{token_id:params.id}}).then(function (response) {
-                location.reload();
               }) .catch(function (error) {
                 console.log(error);
               });
@@ -211,7 +210,7 @@ const mutations={
     state.alertShow = bool
   }
 }
-const wo = {
+const actions = {
   toBuy(context,id){
     if(state.networkCur==2){
       var abi = state.jsonArr.abi
