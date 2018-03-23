@@ -8,7 +8,7 @@
         </div>
         <a href="" class="logo ico"></a>
         <a class="eth-logo ico"  :class="{'eth-is-logo':!networkCur}" @mouseenter="personShow" @mouseleave="personOut">
-          <div class="personShow" v-if="networkCur&&perShow">Offlin</div>
+          <div class="personShow" v-if="networkCur&&perShow">Offline</div>
           <div class="personShow" v-if="!networkCur&&perShow">
             <p v-cloak>{{accounts}}</p>
             <p class="setName"><span @click="$store.commit('changeName',true)">{{name}}</span></p>

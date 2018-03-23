@@ -1,11 +1,12 @@
 <template>
   <div class="detail">
     <section class="content-warp">
+      <div v-if="networkCur" class="err-sp"></div>
       <div class="content">
         <div class="content-l">
           <div class="produce">
             <h5>{{detail.name}}</h5>
-            <img :src="detail.picture" alt="">
+            <img :src="dataDetail.picture" alt="">
             <div class="produce_message">
               <div class="produce_mes">
                 <dl class="produce_Owner">
@@ -334,7 +335,7 @@ export default {
     margin-right: 35px;
   }
   .detail-list:nth-child(1) dd{
-    color: #287de5;
+    /*color: #287de5;*/
   }
   .detail-list:nth-child(4){
     border-bottom: 1px solid #f0f0f0;
@@ -390,6 +391,9 @@ export default {
   }
   .Latest_Transactions dt span,.Latest_Transactions dd span{
     float: left;
+  }
+  .err-sp{
+    height: 100px;
   }
 
 
